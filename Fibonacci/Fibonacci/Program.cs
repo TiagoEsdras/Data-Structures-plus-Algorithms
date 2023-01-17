@@ -15,10 +15,10 @@ static int FindFibonacciIterative(int num)
     return arr[num];
 }
 
-Console.WriteLine("stating FindFibonacciIterative");
+Console.WriteLine("starting FindFibonacciIterative");
 var timeStartingFibonacciIterative = DateTime.Now;
 Console.WriteLine(FindFibonacciIterative(46));
-Console.WriteLine("finishing FindFibonacciIterative. Time spent: {0}", (DateTime.Now - timeStartingFibonacciIterative).TotalSeconds);
+Console.WriteLine("finishing FindFibonacciIterative. Time spent (seconds): {0}", (DateTime.Now - timeStartingFibonacciIterative).TotalSeconds);
 
 static int FindFibonacciRecursive(int num)
 {
@@ -28,31 +28,31 @@ static int FindFibonacciRecursive(int num)
     return FindFibonacciRecursive(num - 1) + FindFibonacciRecursive(num - 2);
 }
 
-Console.WriteLine("stating FindFibonacciRecursive");
+Console.WriteLine("starting FindFibonacciRecursive");
 var timeStartingFibonacciRecursive = DateTime.Now;
 Console.WriteLine(FindFibonacciRecursive(46));
-Console.WriteLine("finishing FindFibonacciRecursive. Time spent: {0}", (DateTime.Now - timeStartingFibonacciRecursive).TotalSeconds);
+Console.WriteLine("finishing FindFibonacciRecursive. Time spent (seconds): {0}", (DateTime.Now - timeStartingFibonacciRecursive).TotalSeconds);
 
 var fibonacciDynamic = new FibonacciMaster();
-Console.WriteLine("stating FibonacciMaster");
+Console.WriteLine("starting FibonacciMaster");
 var timeStartingFibonacciMaster = DateTime.Now;
 Console.WriteLine(fibonacciDynamic.Fib(46));
-Console.WriteLine("finishing FibonacciMaster. Time spent: {0}", (DateTime.Now - timeStartingFibonacciMaster).TotalSeconds);
+Console.WriteLine("finishing FibonacciMaster. Time spent (seconds): {0}", (DateTime.Now - timeStartingFibonacciMaster).TotalSeconds);
 internal class FibonacciMaster
 {
     private readonly Hashtable cache = new();
 
-    public long Fib(long n)
+    public int Fib(int n)
     {
         if (!cache.ContainsKey(n))
         {
             if (n < 2)
                 return n;
 
-            long fibValue = Fib(n - 1) + Fib(n - 2);
+            int fibValue = Fib(n - 1) + Fib(n - 2);
             cache.Add(n, fibValue);
             return fibValue;
         }
-        return (long)cache[n];
+        return (int)cache[n];
     }
 }
